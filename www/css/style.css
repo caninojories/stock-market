@@ -1,1 +1,89 @@
 /* Empty. Add your own CSS if you like */
+
+/*market data*/
+#market-data-card {
+  font-size: 3.25vmin;
+}
+
+#market-data-card .col-20 {
+  font-weight: bolder;
+}
+
+#market-data-card .col-20:last-of-type {
+  text-align: right;
+}
+
+#market-data-card .last-trade {
+  font-size: 3vmin;
+  float: right;
+}
+
+/*stock navbar*/
+#stock-navbar ion-header-bar {
+  border: none;
+}
+
+#stock-navbar .back-text {
+  font-size: 11px;
+}
+
+/* short button bar */
+#short-button-bar .button{
+  /*line-height: normal;
+  min-height: 10px;
+  border    : none;
+  border-radius: 0;
+  font-size: 9px;
+  background-color: #fff;*/
+}
+
+#short-button-bar .active {
+  font-weight: bold;
+}
+
+#short-button-bar {
+  -webkit-webkit-box-shadow: 0px 0px 0px 1px #ddd;
+  -moz-webkit-box-shadow: 0px 0px 0px 1px #ddd;
+  -ms-webkit-box-shadow: 0px 0px 0px 1px #ddd;
+  -o-webkit-box-shadow: 0px 0px 0px 1px #ddd;
+  webkit-box-shadow: 0px 0px 0px 1px #ddd;
+}
+
+/*helper styles*/
+.display-flex {
+  display: flex !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+#stock-subheader-bar {
+  border: none;
+}
+
+#stock-name {
+  color: #333;
+  font-size: 3.5vmin;
+  font-weight: normal;
+  max-height: 33vw;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+
+#stock-price {
+  top: -8px;
+  font-size: 7vmin;
+}
+
+#stock-change {
+  font-size: 4vmin;
+  font-weight: bolder;
+  float: right;
+}
+
+/*adjustment styles*/
+svg text {
+  font: 400 10pt "Helvetica Neue", sans-serif !important;
+}

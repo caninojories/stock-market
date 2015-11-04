@@ -1,0 +1,115 @@
+<ion-view view-title="{{ticker}}">
+  <ion-nav-bar id="stock-navbar" class="bar-dark ng-style:reactiveColor">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+  <div class="bar bar-subheader bar-light" id="stock-subheader-bar">
+    <div class="button-bar">
+      <a class="button  button-clear">
+        <h6 id="stock-name"> {{stockDetailsData.Name}} </h6>
+      </a>
+      <a class="button  button-clear">
+        <h2 class="title button-left button-right" id="stock-price">
+          {{stockDetailsData.PriceSales}}
+        </h2>
+      </a>
+      <a class="button  button-clear">
+        <h6 id="stock-change" ng-class="stockPriceData.change < 0 ? 'assertive' : 'balanced'"> {{stockDetailsData.ChangeinPercent}} </h6>
+      </a>
+    </div>
+    <!-- <div class="buttons" side="left">
+      <div class="button button-clear display-flex">
+        <h6 id="stock-name"> {{stockDetailsData.Name}} </h6>
+      </div>
+    </div>
+    <h2 class="title button-left button-right" id="stock-price">
+      {{stockDetailsData.PriceSales}}
+    </h2>
+    <div class="buttons" side="right">
+      <div class="button button-clear">
+        <h6 id="stock-change" ng-class="stockPriceData.change < 0 ? 'assertive' : 'balanced'"> {{stockDetailsData.ChangeinPercent}} </h6>
+      </div>
+    </div>  -->
+  </div>
+  <ion-content class="has-subheader">
+    <div class="button-bar" id="short-button-bar">
+      <a ng-click="chartViewFunction(1)" ng-class="chartView === 1 ? 'active': ''" class="button"> Day </a>
+      <a ng-click="chartViewFunction(2)" ng-class="chartView === 2 ? 'active': ''" class="button"> Week </a>
+      <a ng-click="chartViewFunction(3)" ng-class="chartView === 3 ? 'active': ''" class="button"> 3m </a>
+      <a ng-click="chartViewFunction(4)" ng-class="chartView === 4 ? 'active': ''" class="button"> Year </a>
+      <a ng-click="chartViewFunction(5)" ng-class="chartView === 5 ? 'active': ''" class="button"> Max </a>
+    </div>
+    <img ng-if="chartView === 1" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=1d&q=l&l=on&z=m&a=vm" style="width: 100%"/>
+    <img ng-if="chartView === 2" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=5d&q=l&l=on&z=m&a=vm" style="width: 100%"/>
+    <img ng-if="chartView === 3" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=3m&q=l&l=on&z=m&a=vm" style="width: 100%"/>
+    <!-- <div ng-if="chartView === 4" nv-chart="chartOptions"></div> -->
+    <nvd3 ng-if="chartView === 4" options="options" data="data"></nvd3>
+    <!-- ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=1y&q=l&l=on&z=m&a=vm" -->
+    <img ng-if="chartView === 5" ng-src="http://chart.finance.yahoo.com/z?s={{ticker}}&t=my&q=l&l=on&z=m&a=vm" style="width: 100%"/>
+    <div class="card" id="market-data-card">
+      <div class="item item-divider"> Market Data <span class="last-trade"> Last Trade: {{stockPriceData.utctime | date: 'h:mm a'}}</span></div>
+      <div class="row row-center">
+        <div class="col col-20"> Ask: </div>
+        <div class="col"> {{stockDetailsData.Ask}} </div>
+        <div class="col col-20"> Bid: </div>
+        <div class="col"> {{stockDetailsData.Bid}} </div>
+      </div>
+
+      <div class="row row-center">
+        <div class="col col-20"> Prev. Close: </div>
+        <div class="col"> {{stockDetailsData.PreviousClose}} </div>
+        <div class="col col-20"> Open: </div>
+        <div class="col"> {{stockDetailsData.Open}} </div>
+      </div>
+
+      <div class="row row-center">
+        <div class="col col-20"> Day's High: </div>
+        <div class="col"> {{stockDetailsData.DaysHigh}}</div>
+        <div class="col col-20"> Day's Low: </div>
+        <div class="col"> {{stockDetailsData.DaysLow}} </div>
+      </div>
+
+      <div class="row row-center">
+        <div class="col col-20"> 52w High: </div>
+        <div class="col"> {{stockDetailsData.YearHigh}}</div>
+        <div class="col col-20"> 52w Low: </div>
+        <div class="col"> {{stockDetailsData.YearLow}} </div>
+      </div>
+
+      <div class="row row-center">
+        <div class="col col-20"> Volume: </div>
+        <div class="col"> {{stockDetailsData.Volume}}</div>
+        <div class="col col-20"> Avg. Volume: </div>
+        <div class="col"> {{stockDetailsData.AverageDailyVolume}} </div>
+      </div>
+
+      <div class="row row-center">
+        <div class="col col-20"> Market Cap: </div>
+        <div class="col"> {{stockDetailsData.MarketCapitalization}}</div>
+        <div class="col col-20"> EBITDA: </div>
+        <div class="col"> {{stockDetailsData.EBITDA}} </div>
+      </div>
+
+      <div class="row row-center">
+        <div class="col col-20"> P/E: </div>
+        <div class="col"> {{stockDetailsData.PERatio}}</div>
+        <div class="col col-20"> EPS: </div>
+        <div class="col"> {{stockDetailsData.EarningsShare}} </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider"> Notes </div>
+      <a class="item">
+        <h2>Note Title</h2>
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider"> News </div>
+      <a class="item item-icon-right">
+        <h2>News Story Title</h2>
+        <icon class="icon ion-ios-arrow-right"></icon>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

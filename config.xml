@@ -2,10 +2,10 @@
 <widget id="com.ionicframework.stockmarket794172" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>stock-market</name>
   <description>
-        An Ionic Framework and Cordova project.
+        A stock market app made with Ionic Framework
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="canino_jories@hotmail.com" href="http://ionicframework.com/">
+      Jo-Ries P. Canino
     </author>
   <content src="index.html"/>
   <access origin="*"/>
